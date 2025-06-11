@@ -28,6 +28,7 @@ public class User {
     @NotBlank(message = "Last name is required")
     @Size(min = 1, max = 255, message = "Last name must be between 1 and 255 characters")
     private String lastName;
+    @NotBlank(message = "Email is required")
     @Email(message = "Email should be valid")
     @Size(max = 255, message = "Email must be at most 255 characters")
     private String email;

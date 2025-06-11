@@ -6,6 +6,7 @@ import jakarta.validation.ConstraintViolationException;
 import org.example.backend.exceptions.custom.EntityNullException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -33,7 +34,7 @@ public class GlobalExceptionHandler {
      * @param e the exception to handle (ConstraintViolationException or EntityNullException)
      * @return ResponseEntity containing error details
      */
-    @ExceptionHandler({ConstraintViolationException.class, EntityNullException.class})
+    @ExceptionHandler({ConstraintViolationException.class, EntityNullException.class, MethodArgumentNotValidException.class})
     public ResponseEntity<Object> handleEntityNullException(Exception e) {
         return buildResponse(e, HttpStatus.NOT_ACCEPTABLE, e.getMessage());
     }
@@ -79,10 +80,14 @@ public class GlobalExceptionHandler {
          Developing logic with this error results in much less code writing, just overriding the error message.
          ConstraintViolationException occurs in case of incorrect user's email formatting, it works through
          @Email annotation.
+         MethodArgumentNotValidException occurs in case of inputting incorrect data, works through @Valid annotation.
          */
         if(e instanceof ConstraintViolationException) {
             responseBody.put("message", "Incorrect email formatting. Try next pattern: 'some_information@mail.com'");
-        } else
+        } else if(e instanceof MethodArgumentNotValidException) {
+            responseBody.put("message", "Incorrect arguments. Please, input something");
+        }
+        else
             responseBody.put("message", message);
         return new ResponseEntity<>(responseBody, status);
     }
