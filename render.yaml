@@ -23,7 +23,7 @@ services:
       SPRING_JPA_HIBERNATE_DDL_AUTO: validate
       SPRING_PROFILES_ACTIVE: prod
     ports:
-      - "8080:8080"
+      - "9090:9090"
     depends_on:
       - db
 
