@@ -46,3 +46,6 @@ npm start
 
 - Frontend: http://localhost:3000
 - Backend API: http://localhost:9090
+
+## If you want to work with this project without running the applications on your machine, you can click the next link
+- Final project - https://fallestlaww.netlify.app
