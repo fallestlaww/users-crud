@@ -19,8 +19,7 @@ public class CustomCorsFilterConfig {
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
-
-        System.out.println("CORS Filter initialized!");
+        
         return new CorsFilter(source);
     }
 }
