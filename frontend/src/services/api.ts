@@ -2,7 +2,7 @@ import axios from 'axios';
 import { User, UserInformationRequest, UserInformationResponse } from '../types/User';
 import _ from 'lodash';
 
-const API_URL = 'http://localhost:9090/users';
+const API_URL = 'https://pavlo-svitenko-back-latest.onrender.com/users';
 
 // Додаємо перехоплювач для логування запитів
 axios.interceptors.request.use(request => {
