@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
  * Provides endpoints for CRUD operations on users.
  */
 @RestController()
-@RequestMapping("/users") // endpoint
+@RequestMapping("/users")
 public class UserController {
     private final UserServiceImpl userService;
 
